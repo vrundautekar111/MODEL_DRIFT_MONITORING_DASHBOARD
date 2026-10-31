@@ -1,78 +1,91 @@
+# ML Model Drift Monitoring Dashboard
 
-# SalesGuard AI
+An advanced machine learning monitoring platform built to track data quality, detect data drift, monitor prediction changes, evaluate model performance, and identify when model retraining is required.
 
-Advanced retail sales forecasting and model drift monitoring.
+## Project Overview
 
-## Technology stack
+Machine learning models can lose accuracy over time when real-world data changes. This is known as model drift.
+
+This project provides a monitoring solution for retail sales prediction models. It compares incoming sales data with reference data, evaluates prediction distributions, monitors model performance, and generates alerts when monitoring thresholds are exceeded.
+
+## Technology Stack
 
 - Python
-- Pandas and NumPy
-- Scikit-learn
-- FastAPI
-- Streamlit
-- Plotly
-- SQLite
-- Pytest
-- Docker
+- FastAPI – REST API backend
+- Streamlit – Interactive dashboard
+- Scikit-learn – Machine learning
+- Pandas and NumPy – Data processing
+- SciPy – Statistical calculations
+- Plotly – Interactive visualizations
+- SQLite / SQLAlchemy – Database
+- Pytest – Testing
+- Docker – Containerization
 
-## Project objectives
+## System Architecture
 
-1. Forecast product demand.
-2. Validate incoming sales data.
-3. Detect feature distribution drift.
-4. Monitor prediction distribution changes.
-5. Evaluate forecast accuracy after actual sales arrive.
-6. Generate monitoring alerts.
-7. Train and compare candidate models.
-8. Require review before promoting a candidate.
+1. Sales data is generated or submitted to the system.
+2. Data validation checks the incoming dataset.
+3. The trained ML model generates predictions.
+4. Data drift monitoring compares incoming features against reference data.
+5. Prediction drift monitoring identifies changes in prediction distributions.
+6. Performance monitoring evaluates predictions against actual sales.
+7. Alert rules identify critical issues.
+8. Retraining logic evaluates whether a candidate model should be trained and compared with the current model.
+9. The Streamlit dashboard displays monitoring results.
 
-## Installation
+## Dashboard Modules
 
-Create and activate a virtual environment:
+- Sales Overview
+- Data Quality Monitoring
+- Data Drift Monitoring
+- Prediction Drift Monitoring
+- Model Performance
+- Alerts and Incidents
+- Model Registry
+- Retraining Center
 
-```powershell
-py -m venv .venv
-.\.venv\Scripts\Activate.ps1
+## Run Locally
+
+### Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-Generate sales data and train the model:
+### Start the FastAPI backend
 
-```powershell
-python scripts/generate_sales_data.py
-python scripts/train_model.py
+```bash
+python -m uvicorn app.main:app --reload
 ```
 
-Start the API:
+API: http://127.0.0.1:8000
 
-```powershell
-uvicorn app.main:app --reload
-```
+API documentation: http://127.0.0.1:8000/docs
 
-Start the dashboard in a second terminal:
+### Start the Streamlit dashboard
 
-```powershell
+```bash
 streamlit run dashboard/Home.py
 ```
 
-## Local URLs
+Dashboard: http://localhost:8501
 
-- Dashboard: http://localhost:8501
-- API: http://127.0.0.1:8000
-- API documentation: http://127.0.0.1:8000/docs
+## Project Use Cases
 
-## Testing
-
-```powershell
-python -m pytest -v
-```
+- Retail sales prediction monitoring
+- Detecting changes in incoming business data
+- Monitoring machine learning model reliability
+- Identifying prediction distribution changes
+- Evaluating model performance over time
+- Supporting model retraining decisions
+- Demonstrating MLOps monitoring workflows
 
 ## Important
 
-The included dataset is synthetic. Replace it with properly
-validated historical company sales before using the model
-to make real business decisions.
+This is a local demonstration project. The localhost URLs work only on your computer. Public access requires deployment to a hosting platform. Model retraining decisions require evaluation and approval; the system does not automatically promote every candidate model.
 
-The monitoring thresholds are illustrative. Retraining
-produces a candidate model; it does not automatically
-replace the active model.
+## Author
+
+Vrunda Utekar
+
+GitHub: https://github.com/vrundautekar111
