@@ -1,0 +1,15 @@
+
+.venv/
+__pycache__/
+*.py[cod]
+.env
+data/raw/*
+data/processed/*
+data/reference/*
+!data/sample/
+!data/sample/.gitkeep
+artifacts/models/*
+artifacts/reports/*
+artifacts/experiments/*
+.pytest_cache/
+.streamlit/secrets.toml
